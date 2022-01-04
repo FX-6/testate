@@ -1,3 +1,6 @@
+# Own (Binary folder)
+bin/
+
 # Prerequisites
 *.d
 
