@@ -38,15 +38,19 @@ int main() {
    return 0;
 }
 
+//declare cmp_polynom
 int cmp_polynom(const void *pp1, const void *pp2) {
+   //init local vars, double array pointers for the arguments
    int rc = 0;
    double *polynom1 = (double *) pp1;
    double *polynom2 = (double *) pp2;
 
+   //loop through the 3 polynom entrys
    for (int i = 0; i < 3; i++) {
-      double p1i = *(polynom1 + i);
-      double p2i = *(polynom2 + i);
+      double p1i = *(polynom1 + i); // assign double value at position i of polynom1 to double p1i
+      double p2i = *(polynom2 + i); // works because polyonom1 is 3 double values but you can only store one of them in p1i, which one is determined by i
 
+      //compare them, if 1st is smaller set returnValue to -1, if second one is smaller set returnValue to 1, else returnValue stays 0 from init
       if (p1i < p2i) {
          rc = -1;
          break;
@@ -56,15 +60,22 @@ int cmp_polynom(const void *pp1, const void *pp2) {
       }
    }
 
+   //return rc (being either 1, 0 or -1)
    return rc;
 }
 
+//declare bsort()
 void bsort(void *base, size_t nel, size_t width, int (*compar)(const void *, const void *)) {
+   //init local vars
    size_t n = nel - 1;
 
+   //loop numberOfElements (nel) - 1, times through the whole array
    for (int i = 0; i < n; i++) {
+      //compare numberOfElements - 1(n) - numberOfLoops(i) times two parts of the array 
       for (int j = 0; j < (n - i); j++) {
+         //pass them into the compare function (link down below for more explanation)
          if ((*compar)((((char*)base) + (j * width)), (((char*)base) + ((j + 1) * width))) > 0) {
+            // swap elements if not in right order (function copyed from original bsort, visti link down below for source)
             do {
                size_t m = width;
                char *a = (((char*)base) + (j * width)), *b = (((char*)base) + ((j + 1) * width));
