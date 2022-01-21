@@ -1,5 +1,6 @@
 # Own (Binary folder)
 bin/
+.vscode/
 
 # Prerequisites
 *.d
