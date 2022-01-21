@@ -7,6 +7,7 @@
 1. Testat 4: 100%
 1. Testat 5: 100%
 1. Testat 6: 100%
+1. Testat 7: 100%
 
 # Notes
 
